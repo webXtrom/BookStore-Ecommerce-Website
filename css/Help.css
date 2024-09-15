@@ -1,0 +1,56 @@
+.reviewContainer {
+    height: 500px;
+    width: 100%;
+
+    margin-top: 100px;
+}
+
+.reviewbox {
+    padding-top: 35px;
+    height: 350px;
+    width: 350px;
+    border: 5px solid rgb(255, 229, 32);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    background: #000000;
+}
+
+.textarea {
+    overflow-y: scroll;
+    height: 80px;
+}
+
+/* ----------------*/
+
+
+.subscribe {
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+.email-container {
+    display: flex;
+    margin: 10px;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding: 50px;
+    background-color: rgb(230, 236, 203);
+    justify-content: center;
+    align-items: center;
+
+}
+
+#email-button {
+    padding: 10px;
+    width: 30%;
+    border: none;
+    position: relative;
+    background-color: rgba(2, 59, 74, 0.974);
+    color: rgb(255, 255, 255);
+
+
+}

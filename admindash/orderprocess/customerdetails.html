@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    <style>
+    body {
+    padding: 20px;
+    }
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    }
+    th, td {
+
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    }
+    .card{
+    margin-top: 20px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container1 mt-3" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" style="width: 1307px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Customer Details</h3>
+                        <table class="mt-5">
+                            <thead></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+        authDomain: "fire9db-f2e9d.firebaseapp.com",
+        databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+        projectId: "fire9db-f2e9d",
+        storageBucket: "fire9db-f2e9d.appspot.com",
+        messagingSenderId: "513706963750",
+        appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+        measurementId: "G-N6QQBNCFZB"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    function getQueryParam(name) {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        return urlSearchParams.get(name);
+    }
+    function fetchProductDetailsAndDisplay(uid, orderid) {
+        const dataRef = database.ref(`orderDetails/${uid}/${orderid}`);
+        dataRef.once('value', function(snapshot) {
+            const orders = snapshot.val();
+            const customerdata = orders.customerdetails;
+            console.log('Retrieved Data:', customerdata);
+
+            document.querySelector('tbody').innerHTML = `
+            <tr>
+            <td style="width: 170px;"">Customer Name</td>
+            <td>${customerdata.name}</td>
+            </tr>
+            <tr>
+            <td style="width: 170px;">Customer Email</td>
+            <td>${customerdata.email}</td>
+            </tr>
+            <tr>
+            <td style="width: 170px;">Customer Phone</td>
+            <td>${customerdata.phone}</td>
+            </tr>
+            <tr>
+            <td style="width: 170px;">Customer UID</td>
+            <td>${customerdata.city}</td>
+            </tr>
+            <tr>
+            <td style="width: 170px;">Customer UID</td>
+            <td>${customerdata.country}</td>
+            </tr>
+            <tr>
+            <td style="width: 170px;">Customer UID</td>
+            <td>${customerdata.currentaddress}</td>
+            </tr>
+            `; 
+        });
+    }
+    const uid = getQueryParam("uid");
+    const orderid = getQueryParam("orderid");
+    fetchProductDetailsAndDisplay(uid, orderid);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/js/bootstrap.min.js"></script>
+        
+</body>
+</html>

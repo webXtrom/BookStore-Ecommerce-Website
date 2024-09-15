@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Management</title>
+    <link rel="stylesheet" href="/css/writersInside.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+</head>
+<header>
+    <nav class=" nav navbar bg-body-tertiary navItem sticky-top ">
+        <div class="container-fluid bg-warning p-3">
+            <h1 class="navbar-brand font-weight-bold text-white" id="bookStore">Book-Store</h1>
+            <form class="d-flex" role="search" id="nav1">
+                <i id="icon2" class="fa-sharp fa-solid fa-cart-shopping p-3 mx-3 " style="color: #000000;"
+                    href="/html/cart.html"></i>
+                <i id="icon3" class="fa-sharp fa-solid fa-book p-3 mx-2 " style="color: #000000;"
+                    href="/html/donatebook.html"></i>
+            </form>
+        </div>
+        <section class="second-nav">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container-fluid  ">
+                    <a class="navbar-brand text-warning" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/Register.html">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/otheritem.html">Other items</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning fw-bold" href="/html/subject.html"
+                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    Subject
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item text-warning fw-bold "
+                                            href="/html/science.html">Science</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/academic.html">Academic</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/fiction.html">Friction</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/cooking.html">Cooking
+                                            Books</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/travel.html">Travel
+                                            Books</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/Islamic.html">Islamic</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/writers.html">Writers</a>
+                            </li>
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning  fw-bold" href="#"
+                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    Settings
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/login.html">Login as
+                                            Customer</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/admindash/login.html">Login
+                                            as admin</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/update.html">Update
+                                            info</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/signout.php">logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/About.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/Help.html">Help</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+    </nav>
+</header>
+
+
+
+<body>
+    <div class="parent-div-WB ">
+        <div class="leftWI">
+            <!--SORT by best seller,new release..-->
+            <div class=" sort">
+                <div class="d-flex justify-content-around">
+                    <h1>Sort</h1>
+                    <a href="http://" id="a1"> Reset Sort</a>
+                </div>
+                <hr class="p-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked
+                        onclick="sort1()">
+                    <label class="form-check-label" for="flexRadioDefault2" id="radiobtn">
+                        price-Low to High
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked
+                        onclick="sort2()">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Price-High to low
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Default checked radio
+                    </label>
+                </div>
+            </div>
+            <!--Filter by subject or category..-->
+            <div class="filter">
+                <div class="d-flex justify-content-around">
+                    <h1>Filter</h1>
+                    <a href="http://" id="a1"> Reset Filter</a>
+                </div>
+                <hr class="p-2">
+                <input class="form-control mb-3" id="searchWI" type="search" placeholder="Search" aria-label="Search">
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" onclick="filter1()">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Asia
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                    <label class="form-check-label" for="defaultCheck2">
+                        Europe
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!---- Writers Books-->
+        <div class="rightWI ">
+            <div class="container py-5 ">
+                <h1> Books</h1>
+                <div class="row row-cols-1 row-cols-md-3 g-4 py-5" id="productList">
+
+                    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+                    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+
+
+                    <script>
+                        const firebaseConfig = {
+                            apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+                            authDomain: "fire9db-f2e9d.firebaseapp.com",
+                            databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+                            projectId: "fire9db-f2e9d",
+                            storageBucket: "fire9db-f2e9d.appspot.com",
+                            messagingSenderId: "513706963750",
+                            appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+                            measurementId: "G-N6QQBNCFZB"
+                        };
+
+                        // Initialize Firebase
+                        firebase.initializeApp(firebaseConfig);
+
+                        const database = firebase.database();
+                        const proelement = document.getElementById('productList');
+
+                        //const uid = "Q6NcMYaz9NYnA7z9IbCY9kc9F402";
+                        const ref = firebase.database().ref(`AllproductList/`);
+
+                        ref.limitToFirst(10).once('value', function (snapshot) {
+                            snapshot.forEach(function (userSnapshot) {
+                                userSnapshot.forEach(function (productSnapshot) {
+                                    const book = productSnapshot.val();
+                                    const uid = userSnapshot.key;
+                                    const proid = productSnapshot.key;
+                                    console.log("uid:", uid, "proid:", proid);
+                                    if (book.catunderprocat === 'Europe') {
+                                        console.log("Product:", book);
+                                        const card = document.createElement('div');
+                                        card.classList.add('col');
+                                        card.innerHTML = `
+                                        <div class="card">
+                                            <img src="${book.imageUrl}" class="card-img-top" alt="">
+                                            <div class="card-body">
+                                            <h5 class="card-title titleCard text-center">${book.proname}</h5>
+                                            <h6 class="text-center writerName">${book.writer}</h6>
+                                            </div>
+                                            <div class="mb-5 d-flex justify-content-around">
+                                            <h3>৳${book.proprice}</h3>
+                                            <button class="shop-item-button btn btn-primary mt-auto" onclick="cart('${uid}', '${proid}')">Buy Now</button>
+                                            </div>
+                                        </div>
+                                        `;
+
+                                        proelement.appendChild(card);
+
+                                        console.log('Book Object:', book);
+                                        console.log('Image URL:', book.imageUrl);
+                                        console.log('Product Name:', book.proname);
+                                        console.log('Writer:', book.writer);
+                                        console.log('Product Price:', book.proprice);
+
+                                    }
+                                });
+
+                            });
+                        });
+
+
+
+                        function cart(uid, proid) {
+                            const productRef = firebase.database().ref(`AllproductList/${uid}/${proid}`);
+
+                            productRef.once('value', (snapshot) => {
+                                const productDetails = snapshot.val();
+                                console.log("products:", productDetails);
+
+
+
+                                const user = firebase.auth().currentUser;
+                                if (user) {
+                                    const authUid = user.uid;
+                                    const cartListRef = firebase.database().ref(`cartList/${authUid}`);
+                                    cartListRef.child(proid).once('value', (cartSnapshot) => {
+                                        let quantity = 1;
+
+                                        if (cartSnapshot.exists()) {
+                                            const existingProduct = cartSnapshot.val();
+                                            console.log("exist:", existingProduct);
+                                            quantity = existingProduct.quantity + 1;
+                                        }
+
+                                        const updatedTotalPrice = quantity * productDetails.proprice;
+                                        firebase.database().ref("cartList/" + authUid).child(proid).set({
+                                            uid: authUid,
+                                            proid: productDetails.proid,
+                                            proname: productDetails.proname,
+                                            procat: productDetails.procat,
+                                            catunderprocat: productDetails.catunderprocat,
+                                            proprice: productDetails.proprice,
+                                            imageUrl: productDetails.imageUrl,
+                                            writer: productDetails.writer,
+                                            publisher: productDetails.publisher,
+                                            proavb: productDetails.proavb,
+                                            quantity: quantity,
+                                            totalPrice: updatedTotalPrice,
+                                        });
+                                        window.location.href = `/html/cart.html?authUid=${authUid}`;
+
+                                    });
+                                }
+                            });
+                        }
+
+
+
+                        function filter1() {
+                            window.location.href = `Asia.html`;
+                        }
+                        function sort1() {
+                            window.location.href = `/html/sort/trasort.html`;
+                        }
+                        function sort2() {
+                            window.location.href = `/html/sort/trasort2.html`;
+                        }
+
+                    </script>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    </section>
+
+
+    <nav aria-label="Page navigation example" style="border-color: black;">
+        <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo; Previous</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="science.html">1</a></li>
+            <li class="page-item"><a class="page-link" href="">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">...</a></li>
+            <li class="page-item"><a class="page-link" href="#">10</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">Next &raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+</body>
+<footer>
+    <div class="goal">
+        <h1 class="goal-text">Welcome to our page</h1>
+        <i class="fa-brands fa-instagram p-3 " style="color: #fdcd21;"></i>
+        <i class="fa-brands fa-facebook p-3" style="color: #fdcd21"></i>
+        <i class="fa-brands fa-twitter p-3" style="color: #fdcd21;"></i>
+
+    </div>
+    <hr>
+    </hr>
+    <div class="footer-content">
+        <ul class="list-items">
+            <li>Contact Us </li>
+            <li>Terms of Service </li>
+            <li>Privacy Policy</li>
+            <li>Privacy Settings</li>
+            <li>Home </li>
+            <li>Other Items</li>
+        </ul>
+
+    </div>
+
+</footer>
+
+</html>

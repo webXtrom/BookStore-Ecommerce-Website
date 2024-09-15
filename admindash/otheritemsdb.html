@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    
+
+    <style>
+       form{
+            background-color: #fff;
+            padding : 15px;
+            box-shadow: 0px 0px 10px 0px;
+            border-radius: 10px;
+        }
+      
+       .wrapper{
+        position: relative;
+        height: 300px;
+        width: 350px;
+        margin-left: 100px;
+        border-radius: 10px;
+        background: #fff;
+        border: 2px dashed #c2cdda;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .wrapper.active{
+        border: none;
+      }
+      .wrapper .image{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .wrapper img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+      .wrapper .icon{
+        font-size: 100px;
+        color: #9658fe;
+      }
+      .wrapper .text{
+        font-size: 20px;
+        font-weight: 500;
+        color: #5B5B7B;
+      }
+      
+      .alert{
+        display: none;
+      }
+      
+          </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 col-md-6 col-sm-12"> 
+        <form id="proform">
+          <div class="card">
+            <div class="card-header text-white" style="background: #22BAA0;">
+              <h3 style="text-align: center;">Add New Stationary Items</h3>
+            </div>
+          </div>
+          <div class="alert alert-success mt-2 p-3 text-center" role="alert">
+            Data inserted successfully.
+          </div>
+          <div class="mb-3 mt-3">
+            <label class="form-label" style=" margin-left: 47px;">Product Id</label>
+            <input type="text" class="form-control" id="textInput1" placeholder="Enter book id" style="width: 850px; margin-left: 45px;">
+          </div>
+          <div class="mb-3 mt-3">
+            <label class="form-label" style=" margin-left: 47px;">Product Name</label>
+            <input type="text" class="form-control" id="textInput2" placeholder="Enter book name" style="width: 850px; margin-left: 45px;">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" style=" margin-left: 47px;">Price</label>
+            <input type="text" class="form-control" id="textInput4" placeholder="Price" style="width: 850px; margin-left: 45px;">
+          </div>
+          <div class="mb-3 mt-5">
+            <label class="form-label" style=" margin-left: 47px;">Availibility</label>
+            <input type="text" class="form-control" id="textInput7" placeholder="Enter text" style="width: 850px; margin-left: 45px;">
+          </div>
+          <div class="mb-3">
+            <label for="imageInput" class="form-label" style=" margin-left: 47px;">Image</label>
+            <input type="file" class="form-control" id="imageInput" accept="image/*" style="width: 850px; margin-left: 45px;"/>
+            <div class="wrapper mt-3" style="margin-left: 130px;">
+              <div class="image">
+                <img src="" alt="">
+              </div>
+              <div class="content">
+                <div class="icon">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="text">
+                  No file chosen, yet!
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit" id="subbtn"  class=" text-white" 
+          style="margin-top: 30px; width: 200px; height: 40px; margin-left: 420px; background: #22BAA0; border-radius: 20px;">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script>
+    const form = document.getElementById('proform');
+    const alert = document.querySelector(".alert");
+    const firebaseConfig = {
+      apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+      authDomain: "fire9db-f2e9d.firebaseapp.com",
+      databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+      projectId: "fire9db-f2e9d",
+      storageBucket: "fire9db-f2e9d.appspot.com",
+      messagingSenderId: "513706963750",
+      appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+      measurementId: "G-N6QQBNCFZB"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const database = firebase.database();
+    const ref = database.ref("productList");
+    const imageInput = document.getElementById('imageInput');
+    const imageWrapper = document.querySelector('.wrapper');
+    const imagePreview = imageWrapper.querySelector('img');
+    const icon = imageWrapper.querySelector('.icon');
+    const text = imageWrapper.querySelector('.text');
+
+
+    imageInput.addEventListener('change', function() {
+      const file = this.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+          imagePreview.src = event.target.result;
+          imageWrapper.classList.add('active');
+          icon.style.display = 'none';
+          text.style.display = 'none';
+          const storageRef = firebase.storage().ref();
+          const imageRef = storageRef.child('images/' + file.name);
+
+          imageRef.put(file).then(function(snapshot) {
+            console.log('Uploaded a blob or file!');
+          }).catch(function(error) {
+            console.error('Error uploading image:', error);
+          });
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+    function resetImageWrapper() {
+      imagePreview.src = '';
+      imageWrapper.classList.remove('active');
+      icon.style.display = 'block';
+      text.style.display = 'block';
+      imageInput.value = ''; 
+    }
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      const proid = document.getElementById('textInput1').value;
+      const proname = document.getElementById('textInput2').value;
+      const proprice = document.getElementById('textInput4').value;
+      const proavb = document.getElementById('textInput7').value;
+      const user = firebase.auth().currentUser;
+      if (user) {
+        const authUid = user.uid;
+
+        firebase.database().ref("stationaryItemList/"+ authUid).child(proid).set({
+          uid:authUid,
+          proid:proid,
+          proname:proname,
+          proprice:proprice,
+          imageUrl: imagePreview.src,
+          proavb:proavb,
+        });
+        firebase.database().ref("StockProducts/").child(proid).set({
+          proid:proid,
+          proname:proname,
+          proprice:proprice,
+          proavb:proavb,
+          quantity: 0
+        });
+      }
+      alert.style.display="block"
+      setTimeout(()=>{
+        alert.style.display="none"
+      },2000)
+      resetImageWrapper();
+      form.reset();
+    });
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

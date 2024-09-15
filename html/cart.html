@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Management</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/form.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+
+</head>
+<header>
+    <nav class=" nav navbar bg-body-tertiary navItem sticky-top ">
+        <div class="container-fluid bg-warning p-3">
+            <h1 class="navbar-brand font-weight-bold text-white" id="bookStore">Book-Store</h1>
+            <form class="d-flex" role="search" id="nav1">
+                <i id="icon2" class="fa-sharp fa-solid fa-cart-shopping p-3 mx-3 " style="color: #000000;"
+                    href="/html/cart.html"></i>
+                <i id="icon3" class="fa-sharp fa-solid fa-book p-3 mx-2 " style="color: #000000;"
+                    href="/html/donatebook.html"></i>
+            </form>
+        </div>
+        <section class="second-nav">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container-fluid  ">
+                    <a class="navbar-brand text-warning" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/Register.html">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/otheritem.html">Other items</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning fw-bold" href="/html/subject.html"
+                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    Subject
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item text-warning fw-bold "
+                                            href="/html/science.html">Science</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/academic.html">Academic</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/fiction.html">Friction</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/cooking.html">Cooking
+                                            Books</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/travel.html">Travel
+                                            Books</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/Islamic.html">Islamic</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/writers.html">Writers</a>
+                            </li>
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning  fw-bold" href="#"
+                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    Settings
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/login.html">Login as
+                                            Customer</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/admindash/login.html">Login
+                                            as admin</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/update.html">Update
+                                            info</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/signout.php">logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/About.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/Help.html">Help</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+    </nav>
+</header>
+
+<body>
+
+    <section id="frst">
+        <section id="shopping-cart" class="pt-5 mt-5 container">
+            <h2 class="font-weight-bold pt-5">Shopping Cart</h2>
+        </section>
+        <div id="cart-container" class="cart-containers container my-5">
+            <table width="100%">
+                <thead>
+                    <tr>
+                        <td>Remove</td>
+                        <td>Image</td>
+                        <td>Product</td>
+                        <td>Price</td>
+                        <td>Quantity</td>
+                        <td>Total</td>
+                    </tr>
+                </thead>
+                <tbody class="cart-items" id="cartBody">
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <section id="cart-bottom" class="totalContainer container">
+
+        </section>
+
+    </section>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+            authDomain: "fire9db-f2e9d.firebaseapp.com",
+            databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+            projectId: "fire9db-f2e9d",
+            storageBucket: "fire9db-f2e9d.appspot.com",
+            messagingSenderId: "513706963750",
+            appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+            measurementId: "G-N6QQBNCFZB"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const database = firebase.database();
+
+
+
+        function getQueryParam(name) {
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            return urlSearchParams.get(name);
+        }
+
+        const tableBody = document.getElementById('cartBody');
+        function fetchProductData(authUid) {
+
+            console.log("Fetching product data for uid:", authUid);
+
+            const proref = database.ref(`cartList/${authUid}`);
+            let totalPrice2 = 0;
+
+            proref.once('value').then((snapshot) => {
+                    const products = snapshot.val();
+
+                    for (const proid in products) {
+                        const product = products[proid];
+                        console.log("Snapshot value:", product);
+                        if (product) {
+                            totalPrice2 += parseFloat(product.totalPrice);
+                            var newRow = document.createElement('tr');
+
+                            newRow.innerHTML = `
+                                <td><button  class="deleteBtn"><i class="fa-solid fa-trash " style="color: #141414;"></i></button></td>
+                                <td><img src="${product.imageUrl}" alt=""></td>
+                                <td><h5>${product.proid}</h5></td>
+                                <td><h5 class="cart-price">${product.proprice}</h5></td>
+                                <td>
+                                    <input class="cart-quantity w-25 pl-1 quantityInput" value="${product.quantity}" type="text">
+                                    <button class="updateQuantityBtn" data-authUid="${authUid}" data-proid="${proid}">OK</button>
+                                </td>
+                                <td><h4 class="tprice">${product.totalPrice}</h4></td>
+                            `;
+                            tableBody.appendChild(newRow);
+                            newRow.setAttribute('data-authUid', authUid);
+                            newRow.setAttribute('data-proid', proid);
+
+
+                            const deleteBtn = newRow.querySelector('.deleteBtn');
+                            deleteBtn.addEventListener('click', () => {
+                                deleteProduct(authUid, proid);
+                            });
+                        } else {
+                            console.log("Product data not found.");
+                        }
+                    }
+
+
+                    let totalcontainer = document.querySelector(".totalContainer");
+
+                    totalcontainer.innerHTML += `
+                    <div class="total col-lg-6 col-md-6 col-12">
+                        <div>
+                            <h5>CART TOTAL</h5>
+                            <div class="d-flex justify-content-between">
+                                <h6>Subtotal</h6>
+                                <p class="SubTotal">৳${totalPrice2}</p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <h6>Shipping</h6>
+                                <p>৳160</p>
+                            </div>
+                            <hr class="second-hr">
+                            <div class="d-flex justify-content-between">
+                                <h6>Total</h6>
+                                <p class="total-cart">৳${totalPrice2 + 160}</p>
+                            </div>
+                            <button class="ml-auto" onclick="checkout()">PROCEED TO CHECKOUT</button>
+                        </div>
+                    `;
+                });
+
+        }
+
+
+
+
+        function deleteProduct(authUid, proid) {
+            const productsRef = firebase.database().ref(`cartList/${authUid}/${proid}`);
+
+            productsRef.remove().then(() => {
+                const rowToDelete = document.querySelector(`#cartBody tr[data-authUid="${authUid}"][data-proid="${proid}"]`);
+                if (rowToDelete) {
+                    rowToDelete.remove();
+                    console.log('Product delete successfully.');
+                } else {
+                    console.log('Row not found.');
+                }
+            })
+            .catch((error) => {
+                    console.error('Error deleting product:', error);
+            });
+        }
+        const authUid = getQueryParam("authUid");
+        //const proid = getQueryParam("proid");
+        console.log("uid:", authUid);
+        // console.log("Proid:", proid);
+        fetchProductData(authUid);
+
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('updateQuantityBtn')) {
+                const authUid = event.target.getAttribute('data-authUid');
+                const proid = event.target.getAttribute('data-proid');
+                const row = event.target.closest('tr');
+                const quantityInput = row.querySelector('.quantityInput');
+                const tprice = row.querySelector('.tprice');
+
+                const cartListRef = firebase.database().ref(`cartList/${authUid}`);
+                cartListRef.child(proid).once('value').then((cartSnapshot) => {
+                    if (cartSnapshot.exists()) {
+                        const productDetails = cartSnapshot.val();
+                        const newQuantity = parseInt(quantityInput.value, 10);
+
+                        if (!isNaN(newQuantity)) {
+                            const updatedTotalPrice = newQuantity * productDetails.proprice;
+
+                            cartListRef.child(proid).update({
+                                quantity: newQuantity,
+                                totalPrice: updatedTotalPrice,
+                            }).then(() => {
+                                quantityInput.value = newQuantity;
+                                tprice.textContent = updatedTotalPrice;
+                            }).catch(error => {
+                                console.error("Error updating quantity:", error);
+                            });
+                        } else {
+                            console.error("Invalid quantity value");
+                        }
+                    }
+                });
+            }
+        });
+
+        function checkout() {
+            console.log("Checkout button clicked!");
+
+            var a = document.getElementById("frst");
+            a.remove();
+
+            var secondSection = document.getElementById("2nd");
+            secondSection.style.display = "block";
+        }
+        let serialNumberCounter = 0;
+
+        function addDataToFirebase() {
+            var database = firebase.database();
+
+
+            var orderData = {
+                productdetails: {},
+                customerdetails: {},
+                status: "ordered",
+                paymethod: {},
+                paystatus: "N/A"
+            };
+
+            const authUid = getQueryParam("authUid");
+            const rows = tableBody.getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const imageUrl = row.querySelector('img').src;
+                const proid = row.querySelector('td:nth-child(3) h5').innerText;
+                const proprice = row.querySelector('td:nth-child(4) h5').innerText;
+                const quantity = row.querySelector('.quantityInput').value;
+                const totalPrice = row.querySelector('td:nth-child(6) h4').innerText;
+
+                const rowData = {
+                    imageUrl: imageUrl,
+                    proid: proid,
+                    proprice: proprice,
+                    quantity: quantity,
+                    totalPrice: totalPrice
+                };
+
+                if (!orderData.productdetails[proid]) {
+                    orderData.productdetails[proid] = {};
+                }
+
+                orderData.productdetails[proid] = {
+                    imageUrl: rowData.imageUrl,
+                    proid: rowData.proid,
+                    proprice: rowData.proprice,
+                    quantity: rowData.quantity,
+                    totalPrice: rowData.totalPrice
+                };
+            }
+            for (let i = 0; i < rows.length; i++) {
+                const row = rows[i];
+                const quantity = row.querySelector('.quantityInput').value;
+                const proid = row.querySelector('td:nth-child(3) h5').innerText;
+        
+                const rowData = {
+                    quantity: quantity,
+                };
+                const productRef = firebase.database().ref(`StockProducts/${proid}`); 
+                productRef.update({
+                    quantity: rowData.quantity
+                }).then(() => {
+                    console.log(`Quantity updated for product ${proid}`);
+                }).catch(error => {
+                    console.error('Error updating quantity:', error.message);
+                });
+            }
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phn').value;
+            const paymentMethod = document.querySelector('input[name="payment_method"]:checked').value;
+            const city = document.getElementById('city').value;
+            const postcode = document.getElementById('postcode').value;
+            const country = document.getElementById('country').value;
+            const currentadd = document.getElementById('address').value;
+
+            orderData.customerdetails = {
+                uid: authUid,
+                name: name,
+                email: email,
+                phone: phone,
+                city: city,
+                postcode: postcode,
+                country: country,
+                currentaddress: currentadd,
+            };
+            orderData.paymethod = paymentMethod;
+            database.ref('orderDetails/' + authUid).push(orderData).then(() => {
+                alert('Data submitted successfully!');
+                window.location.href = `payment.html`;
+            })
+            .catch((error) => {
+                console.error('Error submitting data: ', error);
+            });
+
+
+            var cartBody = document.getElementById('cartBody');
+            if (cartBody) {
+                cartBody.innerHTML = '';
+            }
+            const cartListRef = firebase.database().ref(`cartList/${authUid}`);
+            cartListRef.remove().then(() => {
+                console.log('Cart data removed successfully from the database.');
+            })
+            .catch((error) => {
+                console.error('Error removing cart data from the database:', error);
+            });
+
+        }
+
+        function previous() {
+            var secondSection = document.getElementById("2nd");
+            if (secondSection) {
+                secondSection.style.display = "none";
+            }
+
+            var frstSection = document.getElementById("frst");
+            if (frstSection) {
+                frstSection.style.display = "block";
+            }
+        }
+
+    </script>
+
+
+
+
+
+
+
+    <section id="2nd" style="display: none;">
+        <div class="tab-pane" style="width: 800px; margin-left: 250px;">
+            <div class="row text-center">
+
+                <div class="alert alert-secondary border-0 h4 text-center bg-alert rounded-0" role="alert">
+                    Orderer information
+                </div>
+            </div>
+            <form class="needs-validation" novalidate>
+                <div class="form-row" style="padding: 20px;">
+                    <div class="col-md-12 mb-3">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control space" id="name"
+                            placeholder="please enter your name  . . ." required>
+                        <div class="valid-feedback">
+                            Correct format!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your name . . .
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control space" id="email"
+                            placeholder="please enter your email . . ." required>
+                        <div class="valid-feedback">
+                            Correct format!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your email . . .
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="email">Telephone / Local phone</label>
+                        <input type="tel" class="form-control space" id="phn"
+                            placeholder="please enter your phone number. . ." required>
+                        <div class="valid-feedback">
+                            Correct format!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your email . . .
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label>Please select your payment method</label><br>
+                        <input type="radio" id="cash" name="payment_method" value="cash" style="margin-left: 0px;">
+                        <label for="cash">Cash</label>
+                        <input type="radio" id="bkash" name="payment_method" value="bkash" style="margin-left: 50px;">
+                        <label for="bkash">Bkash</label><br>
+                    </div>
+                </div>
+                <div class="form-row" style="padding: 20px; margin-top: -15px;">
+                    <div class="col-md-12 mb-3">
+                        <label for="country">Country</label>
+                        <select class="form-control" id="country" required>
+                            <option>Bangladesh</option>
+                            <option>Taiwan</option>
+                            <option>Japan</option>
+                            <option>Korea</option>
+                            <option>America</option>
+                            <option>Australia</option>
+                            <option>French</option>
+                            <option>Germany</option>
+                            <option>Italy</option>
+                        </select>
+                        <div class="valid-feedback">
+                            Correct format !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your country . . .
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control space" id="city"
+                            placeholder="please enter your city . . ." required>
+                        <div class="valid-feedback">
+                            Correct format !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your city . . .
+                        </div>
+
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="postal">Postal code</label>
+                        <select class="form-control" id="postcode" required>
+                            <option>880</option>
+                            <option>991</option>
+                            <option>992</option>
+                            <option>993</option>
+                            <option>994</option>
+                            <option>995</option>
+                            <option>996</option>
+                            <option>997</option>
+                            <option>998</option>
+                            <option>999</option>
+                        </select>
+                        <div class="valid-feedback">
+                            Correct format !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your postal code . . .
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control space" id="address"
+                            placeholder="please enter your town address . . ." required>
+                        <div class="valid-feedback">
+                            Correct format !
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter your address . . .
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+   
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-primary p-2 te" onclick="addDataToFirebase()" type="submit">Submit
+                </button>
+            </div>
+
+
+            <div class="list-group my-5 p-0 justify-content-center" id="allList" role="tablist"
+                style="flex-direction: row;">
+                <a href="" onclick="previous()"
+                    class="list-group-item-dark mr-3 w-35 px-0 py-2 rounded text-center btns" data-toggle="list"
+                    role="tab">
+                    <i class="fal fa-arrow-circle-left"></i> Previous
+                </a>
+                <a href="" class="list-group-item-dark ml-3 w-35 px-0 py-2  rounded text-center btns" data-toggle="list"
+                    role="tab">
+                    Next <i class="fal fa-arrow-circle-right"></i>
+                </a>
+            </div>
+    </section>
+
+</body>
+
+
+
+<footer>
+    <div class="goal">
+
+        <i class="fa-brands fa-instagram p-3 " style="color: #fdcd21;"></i>
+        <i class="fa-brands fa-facebook p-3" style="color: #fdcd21"></i>
+        <i class="fa-brands fa-twitter p-3" style="color: #fdcd21;"></i>
+
+    </div>
+    <hr>
+    </hr>
+    <div class="footer-content">
+        <ul class="list-items">
+            <li>Contact Us </li>
+            <li>Terms of Service </li>
+            <li>Privacy Policy</li>
+            <li>Privacy Settings</li>
+            <li>Home </li>
+            <li>Other Items</li>
+        </ul>
+
+    </div>
+
+</footer>

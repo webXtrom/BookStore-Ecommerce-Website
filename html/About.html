@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Management</title>
+    <link rel="stylesheet" href="/css/About.css">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+</head>
+<header>
+    <nav class=" nav navbar bg-body-tertiary navItem sticky-top ">
+        <div class="container-fluid bg-warning p-3">
+            <h1 class="navbar-brand font-weight-bold text-white" id="bookStore">Book-Store</h1>
+            <form class="d-flex" role="search" id="nav1">
+                <i id="icon2" class="fa-sharp fa-solid fa-cart-shopping p-3 mx-3 " style="color: #000000;"
+                    href="/html/cart.html"></i>
+                <i id="icon3" class="fa-sharp fa-solid fa-book p-3 mx-2 " style="color: #000000;"
+                    href="/html/donatebook.html"></i>
+            </form>
+        </div>
+        <section class="second-nav">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container-fluid  ">
+                    <a class="navbar-brand text-warning" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/Register.html">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/otheritem.html">Other items</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning fw-bold" href="/html/subject.html"
+                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    Subject
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item text-warning fw-bold "
+                                            href="/html/science.html">Science</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/academic.html">Academic</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/fiction.html">Friction</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/cooking.html">Cooking
+                                            Books</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/travel.html">Travel
+                                            Books</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/Islamic.html">Islamic</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/writers.html">Writers</a>
+                            </li>
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning  fw-bold" href="#"
+                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    Settings
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/login.html">Login as
+                                            Customer</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/admindash/login.html">Login
+                                            as admin</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/update.html">Update
+                                            info</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/signout.php">logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/About.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/Help.html">Help</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+    </nav>
+</header>
+
+<body>
+    <section class="About_top text-center">
+        <p class="p-5 m-5"> “Maybe this is why we read, and why in moments <br> we return to books: to
+            find we return to books: to find
+            <br>
+            words for what
+            we
+            already know.”<br>
+            ―Alberto Manguel, A Reading Diary
+        </p>
+
+
+    </section>
+
+    <h1 class="text-center p-5 text-warning fw-bold ">Who We Are...?</h1>
+    <div class="About_div  d-flex">
+        <div>
+            <img class="aboutImg" src="/images/Gray and White Simple Minimalist Book Store Promotion Facebook Post.jpg"
+                alt="" srcset="">
+        </div>
+        <div>
+            <p class="pt-5  px-5">
+                As distributors, it was our fantasy to open a bookshop that comprehended workmanship and showed books
+                enough
+                to commit a whole space to the class, to make an environment as excellent, tricking, and smooth as the
+                books
+                it would house, and to start development with regards to the energizing a wide margin the nation was
+                making
+                in the plan
+            </p>
+            <p class="px-5">
+                In these attempting times when books are for your consideration, cash, and time, and when bookshops
+                are surrendering to the extreme weight set on them, 'Bookstore' has figured out how to develop to 8
+                looks
+                around the nation because of you, dear readers.
+            </p>
+
+            <p class="px-5 pb-5">
+                We have also come up with some donation plan to help the needy people around us. some of this ideas are
+                below..
+            </p>
+        </div>
+    </div>
+    <section class="part3">
+        <div class="donate-today text-center">
+            <h2>Our Donate Plan</h2>
+
+
+        </div>
+        <div class="container2">
+            <div id="one" class="container2-item">
+                <img src="/icons/food.png" alt="food icon" class="p-2">
+                <h3>Food for a family</h3>
+                <p>We Provide food for needy people for a very low price. And we also give away food in a verious way.
+                </p>
+
+            </div>
+            <div id="two" class="container2-item">
+                <img src="/icons/shelter.png" alt="shelter icon" class="p-2">
+                <h3>Shelter for a family</h3>
+                <p>We also build house for homeless people. And try to give them shelter to live their life.</p>
+            </div>
+            <div id="three" class="container2-item">
+                <img src="/icons/Frame-1.png" alt="frame icon" class="p-2">
+                <h3>Education for a child</h3>
+                <p>We have buit school for needy children where they can get their education for completly free of cost.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+<footer>
+    <div class="goal">
+        <h1 class="goal-text">Welcome to our page</h1>
+        <i class="fa-brands fa-instagram p-3 " style="color: #fdcd21;"></i>
+        <i class="fa-brands fa-facebook p-3" style="color: #fdcd21"></i>
+        <i class="fa-brands fa-twitter p-3" style="color: #fdcd21;"></i>
+
+    </div>
+    <hr>
+    </hr>
+    <div class="footer-content">
+        <ul class="list-items">
+            <li>Contact Us </li>
+            <li>Terms of Service </li>
+            <li>Privacy Policy</li>
+            <li>Privacy Settings</li>
+            <li>Home </li>
+            <li>Other Items</li>
+        </ul>
+
+    </div>
+
+</footer>
+
+</html>

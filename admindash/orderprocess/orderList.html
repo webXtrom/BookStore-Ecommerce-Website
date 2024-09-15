@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/cart.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+           <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+           <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+           <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+  
+
+    <title>Document</title>
+ 
+</head>
+<body>
+    <section id="shopping-cart" class="pt-5 mt-5 container">
+        <h2 class="font-weight-bold pt-5">Shopping Cart</h2>
+    </section>
+    <div id="cart-container" class="cart-containers container my-5">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Total</td>
+                </tr>
+            </thead>
+            <tbody class="cart-items" id="cartBody"></tbody>
+        </table>
+        <section id="cart-bottom" class="totalContainer container" style="margin-top: 50px;">
+        </section>
+    </div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+            authDomain: "fire9db-f2e9d.firebaseapp.com",
+            databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+            projectId: "fire9db-f2e9d",
+            storageBucket: "fire9db-f2e9d.appspot.com",
+            messagingSenderId: "513706963750",
+            appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+            measurementId: "G-N6QQBNCFZB"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+        function getQueryParam(name) {
+            const urlSearchParams = new URLSearchParams(window.location.search);
+            return urlSearchParams.get(name);
+        }
+        function fetchProductDetailsAndDisplay(uid, orderid) {
+            const tableBody = document.getElementById('cartBody');
+            const ref = database.ref(`orderDetails/${uid}/${orderid}`);
+            let totalPrice2 = 0; 
+            ref.once('value', function(snapshot) {
+                const orders = snapshot.val();
+                const productDetails = orders.productdetails;
+                for (const proid in productDetails) {
+                    const product = productDetails[proid];
+                    console.log('Retrieved Data:', product);
+                    totalPrice2 += parseFloat(product.totalPrice);
+                    var newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td><a href="#"><i class="fa-solid fa-trash " style="color: #141414;"></i></a></td>
+                        <td><img src="${product.imageUrl}" alt=""></td>
+                        <td><h5>${product.proid}</h5></td>
+                        <td><h5 class="cart-price">${product.proprice}</h5></td>
+                        <td><input class="cart-quantity w-25 pl-1" value="${product.quantity}" type="number"></td>
+                        <td><h5>${product.totalPrice}</h5></td>
+                    `;
+                    tableBody.appendChild(newRow);
+                }
+                var totalRow = document.createElement('tr');
+                totalRow.innerHTML = `
+                <td colspan="5" align="right"><h5>Total Price:</h5></td>
+                <td><h5>${totalPrice2}</h5></td>
+                `;
+                tableBody.appendChild(totalRow);
+                let totalcontainer = document.querySelector(".totalContainer");
+                totalcontainer.innerHTML += `
+                <div class="total col-lg-6 col-md-6 col-12">
+                    <div>
+                        <h5>CART TOTAL</h5>
+                        <div class="d-flex justify-content-between">
+                            <h6>Subtotal</h6>
+                            <p class="SubTotal">৳${totalPrice2}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <h6>Shipping</h6>
+                            <p>৳160</p>
+                        </div>
+                        <hr class="second-hr">
+                        <div class="d-flex justify-content-between">
+                            <h6>Total</h6>
+                            <p class="total-cart">৳${totalPrice2 + 160}</p>
+                        </div>
+                            
+                    </div>
+                </div>`;
+            });
+        }
+        const uid = getQueryParam("uid");
+        const orderid = getQueryParam("orderid");
+        fetchProductDetailsAndDisplay(uid, orderid);
+    </script>
+</body>
+</html>

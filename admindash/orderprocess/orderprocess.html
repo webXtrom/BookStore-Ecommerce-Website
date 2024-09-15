@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+    <link href="/admindash/admin.css" rel="stylesheet"/>
+    <link href="/admindash/product.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+<style>
+    table tbody .hidden-cell{
+        display: none;
+    }
+</style>
+ 
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class=""></i>
+            <span class="logo_name">BookStore</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="/admindash/admin.html">
+                    <i class="bx bx-grid-alt"></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admindash/AllproductsList.html">
+                    <i class="bx bx-box"></i>
+                    <span class="link_name">Books List</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admindash/kidsbookzone.html">
+                    <i class="bx bx-book-alt"></i>
+                    <span class="link_name">Kids Book</span>
+                </a>
+            </li>
+            <li>
+                <a href="/admindash/otheritemszone.html">
+                    <i class="bx bx-box"></i>
+                    <span class="link_name">Other Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="orderprocess/orderprocess.html">
+                    <i class="bx bx-list-ul"></i>
+                    <span class="link_name">Order list</span>
+                </a>
+            </li>
+            <li>
+              <a href="/admindash/dbook.html">
+                <img src="/images/6583945.webp" style="width: 25px; height: 25px;margin-left: -5px;color: #fff; filter: invert(100%);" alt=""/>
+                  <span class="link_name" style="margin-left: 18px;">Donated Books</span>
+              </a>
+          </li>
+            <li>
+                <a href="/admindash/stock/CategoryBookstock.html">
+                    <i class="bx bx-coin-stack"></i>
+                    <span class="link_name">Stock</span>
+                </a>
+            </li>
+         
+          
+            <li>
+                <a href="reviews.html">
+                    <i class="bx bx-cog"></i>
+                    <span class="link_name">Reviews</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bx bx-log-out"></i>
+                    <span class="link_name" id="logoutbtn">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- home-content -->
+
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button ">
+                <i class="bx bx-menu sidebarbtn"></i>
+                <span class="dashboard">Dashboard</span>
+            </div>
+            <div class="dropdown">
+              
+                <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class='bx bxs-user-circle' style="margin-left: 150px; font-size: 40px;"></i>
+                  </a>
+               
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="Register.html">Register</a></li>
+                  <li><a class="dropdown-item" href="Login.html">Log In</a></li>
+                  <li><a class="dropdown-item" href="#" id="logoutbtn1">Logout</a></li>
+                </ul>
+              </div>
+            </div>
+            <script>
+            const userEmail = sessionStorage.getItem('userEmail');
+            const userLoggedIn = sessionStorage.getItem("userLoggedIn");
+            function logout() {
+                sessionStorage.removeItem('userEmail');
+                sessionStorage.removeItem('userLoggedIn');
+                window.location.href = 'login.html';
+            }
+            document.getElementById('logoutbtn').addEventListener('click', logout);
+            document.getElementById('logoutbtn1').addEventListener('click', logout);
+
+            if (!userLoggedIn && userEmail) {
+                    window.location.href = 'login.html';
+            }
+
+            </script>
+              
+        </nav>
+   
+     
+        <div class="page-header">
+          <h2>Orders list</h2>
+          <a href="product.html">Home </a>
+         
+            <!---<a href="viewall.html">/ View All Books</a>--->
+        </div>
+
+        <div class="records table-responsive">
+            <table  width="97%">
+                <thead>
+                    <tr>
+                        <th>SL</th>
+                        <th style="display: none;">Customer UID</th>
+                        <th style="padding: 15px;">Order Id</th>
+                        <th style="width:50px;">Order Details</th>
+                        <th style="width:180px;padding-left: 10px;">Order Status</th>
+                        <th style="width:100px;padding-left: 10px;">Payment Method</th>
+                        <th style="width: 120px;padding-left: 10px">Payment Status</th>
+                        <th style="width: 80px;padding-left: 10px">Issued date</th>
+                        <th style="text-align: center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tb1">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+        authDomain: "fire9db-f2e9d.firebaseapp.com",
+        databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+        projectId: "fire9db-f2e9d",
+        storageBucket: "fire9db-f2e9d.appspot.com",
+        messagingSenderId: "513706963750",
+        appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+        measurementId: "G-N6QQBNCFZB"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const database = firebase.database();
+    const ref = firebase.database().ref('orderDetails/');
+    var tbody = document.getElementById("tb1");
+
+    function addprotable(serial, uid, orderid, orderdetails, status, paymethod, paystatus, issueddate, actions) {
+        
+        let tr = document.createElement("tr");
+        let td1 = document.createElement('td');
+        let td2 = document.createElement('td');
+        td2.classList.add('hidden-cell');
+        let td3 = document.createElement('td');
+        let td4 = document.createElement('td');
+        let td5 = document.createElement('td');
+        let td6 = document.createElement('td');
+        let td7 = document.createElement('td');
+        let td8 = document.createElement('td');
+        let td9 = document.createElement('td');
+        
+                
+        var currentDate = new Date();
+        var formattedDate = currentDate.toLocaleDateString(); 
+        serial++;
+        
+        td1.innerHTML = serial;
+        td2.innerHTML = uid;
+        td3.innerHTML = orderid;
+        td4.innerHTML = `<button type="button" style="width:150px; height:40px;"
+            class="btn btn-outline-primary" onclick="Prodetails('${uid}', '${orderid}')">Product Details
+            </button>
+        <button type="button" class="btn btn-outline-primary" style="width:180px; height:40px; margin-top: 10px;" onclick="Cusdetails('${uid}', '${orderid}')"></i>Customer Details</button>`;
+        td5.innerHTML = ` <input class="cart-quantity element" style="width:100px;" value="${status}" 
+        type="text">
+        <button type="button" onclick="updatestatus('${uid}', '${orderid}', this.previousElementSibling)">OK</button>`;
+        td6.innerHTML = paymethod;
+        td7.innerHTML =  ` <input class="cart-quantity1 element1" style="width:50px;" value="${paystatus}" 
+        type="text">
+        <button type="button" onclick="paystatus('${uid}', '${orderid}')">OK</button>`;
+
+        td8.innerHTML = formattedDate;
+        td9.innerHTML = `<button type="button" class="btn btn-light del" 
+        onclick="deleteProduct('${uid}', '${orderid}')" >
+        <i class='bx bxs-trash'  style="font-size:25px; color:red"></i></button>`;
+
+        td3.style.maxWidth = '210px';
+        //td3.style.paddingLeft = '-40px';
+            td4.style.paddingRight = '40px';
+        // td4.style.paddingRight = '-250px';
+        //td4.style.maxWidth = '100px';
+        td5.style.paddingLeft = '15px'; 
+        // td6.style.maxWidth = '10px';
+        td6.style.paddingLeft = '10px';
+        td7.style.paddingLeft = '20px';
+        td8.style.paddingLeft = '20px';
+        td9.style.paddingLeft = '40px';
+        
+
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+        tr.appendChild(td6);
+        tr.appendChild(td7);
+        tr.appendChild(td8);
+        tr.appendChild(td9);
+        tbody.appendChild(tr);
+    }
+
+    function Prodetails(uid, orderid) {
+        window.location.href = `orderList.html?uid=${uid}&orderid=${orderid}`;
+        //console.log('Redirecting to:', window.location.href);
+    }
+    function Cusdetails(uid, orderid) {
+        window.location.href = `customerdetails.html?uid=${uid}&orderid=${orderid}`;
+    }
+    function updatestatus(uid, orderid, inputElement) {
+        const newStatus = inputElement.value;
+        const orderRef = database.ref(`orderDetails/${uid}/${orderid}`);
+        orderRef.update({ 
+            status: newStatus 
+        })
+        .then(() => {
+            console.log('Status updated successfully');
+        })
+        .catch(error => {
+            console.error('Error updating status:', error.message);
+        });
+    }
+
+    function updatepaystatus(uid, orderid, inputElement) {
+        const paystatus1 = inputElement.value;
+        const orderRef = database.ref(`orderDetails/${uid}/${orderid}`);
+        orderRef.update({ 
+        paystatus: paystatus1
+        })
+        .then(() => {
+            console.log('Status updated successfully');
+        })
+        .catch(error => {
+            console.error('Error updating status:', error.message);
+        });
+    }
+
+    function deleteProduct(uid, orderid) {
+        const productsRef = firebase.database().ref('orderDetails/' + '/' + uid + '/' + orderid);
+        productsRef.remove().then(() => {
+            const rowToDelete = document.querySelector(`#tb1 tr[data-uid="${uid}"][data-orderid="${orderid}"]`);
+            if (rowToDelete) {
+                rowToDelete.remove();
+            }
+            console.log('Product deleted successfully.');
+        })
+        .catch((error) => {
+        console.error('Error deleting product:', error);
+        });
+    }
+    const productsRef = firebase.database().ref('orderDetails/');
+    productsRef.on("value", (snapshot) => {
+        const productList = snapshot.val();
+        addallproducts(productList);
+    });
+ 
+    function addallproducts(productList) {
+        console.log(productList);
+        if (productList && typeof productList === "object") {
+            let serial = 0; 
+            for (const uid in productList) {
+                const orders = productList[uid];
+                for (const orderid in orders) {
+                    const order = orders[orderid];
+                    const uid1 = orderid; 
+                    const status = order.status; 
+                    const paymethod1 = order.paymethod;
+                    const paystatus1 = order.paystatus;
+                    addprotable(
+                        serial,
+                        uid,
+                        orderid,
+                        `<button type="button" class="btn btn-primary"  onclick="Prodetails('${uid}', '${orderid}')><i class="las la-telegram-plane"></i>Product Details</button>
+                        <button type="button" class="btn btn-primary" onclick="Cusdetails('${uid}', '${orderid}')"><i class="las la-telegram-plane"></i>Customer Details</button>`,
+                        status,
+                        paymethod1,
+                        paystatus1,
+                        order.issueddate,
+                        `<div class="actions">
+                        <button type="button" class="btn btn-primary del" onclick="deleteProduct('${uid}', '${orderid}')">
+                        <i class='bx bxs-trash' style="font-size:25px; color:red"></i></i></i>Delete</button></div>`,
+                    );
+                    serial++;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

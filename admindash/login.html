@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <div class="container" style="width:50%; margin-top: -40px;">
+
+    <div class="row justify-content-center">
+        <div class="col-lg-12  col-md-12">
+          <div class="login_form p-4 shadow-sm rounded" style="background-color: #99CCFF; color:#000000; font-size: 20px; margin-top: 15%">
+            <h2 class="text-center">Sign In</h2>
+           <form>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" id="eml" name="email" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" id="passwrd" name="pass" class="form-control">
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input">
+                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+              </div>
+              <div class="text-center"><button type="submit" name="button" class="form_btn btn btn-outline-dark" class="fw-medium" style="background-color:#3399FF; width: 80px">Login</button></div>
+            </form>
+
+            <p style="font-size: 17px; text-align: center; margin-top: 10px;"><a href="forgot_password.php" class="text-decoration-none" style="color: #00376b;">Forgot Password?</a></p>
+            <br>
+            <p class="text-center">Don't have an account? <a href="Signup.php" class="text-decoration-none fw-medium">Sign Up</a></p>
+          </div>
+
+        </div>
+
+        <div class="col-lg-4  col-md-6">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, query, orderByChild, equalTo, get, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+    authDomain: "fire9db-f2e9d.firebaseapp.com",
+    databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+    projectId: "fire9db-f2e9d",
+    storageBucket: "fire9db-f2e9d.appspot.com",
+    messagingSenderId: "513706963750",
+    appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+    measurementId: "G-N6QQBNCFZB"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const auth = getAuth();
+  const dbref = ref(db);
+
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit",  async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('eml').value;
+    const password = document.getElementById('passwrd').value;
+    signInWithEmailAndPassword(auth, email, password).then((userCredentials) => {
+      sessionStorage.setItem('userEmail', email);
+      sessionStorage.setItem('userLoggedIn', true);
+
+      const user = userCredentials.user;
+      const Query = query(ref(db, 'List/'), orderByChild('uemail'), equalTo(email));
+      get(Query).then((snapshot) => {
+        console.log(snapshot);
+        if (snapshot.exists()) {
+            snapshot.forEach(function (data) {
+              const encryptedPassword = data.val().upass;
+              console.log("Encrypted Password from Database: ", encryptedPassword);
+              const dbpass = decpass(encryptedPassword, password); 
+              //const dbpass = decpass(data.val().upass);
+              if (dbpass === decpass(encryptedPassword, password)) {
+                checkEmailVerification(email, password);
+              } else {
+                alert("Invalid Password!");
+                console.log("Decrypted Password from Database: ", dbpass);
+                console.log("User-entered Password: ", password);
+              }
+            });
+        } else {
+          alert("Email not found!");
+        }
+      });
+      return false;
+    });
+    function decpass(dbpass) {
+      var epass = CryptoJS.AES.decrypt(dbpass, password);
+      return epass.toString(CryptoJS.enc.Utf8);
+    }
+    function checkEmailVerification(email, password){
+      signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        const user = userCredential.user;
+
+        if(user.emailVerified){
+          alert('login');
+          window.location.href = "admin.html"; 
+        }else {
+          alert("Email not verified. Please verify your email before logging in.");
+        }
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+    }
+    form.reset();
+  })
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+</html>

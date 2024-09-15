@@ -1,0 +1,167 @@
+.parent-div-WB {
+    display: flex;
+}
+
+
+
+.sort {
+
+    width: 250px;
+    height: 250px;
+    margin-left: 20%;
+    border: 2px solid rgb(255, 187, 0);
+    box-shadow: 0 0 5px 5px rgb(245, 203, 16);
+}
+
+
+
+#a1 {
+    text-decoration: none;
+    color: rgb(48, 43, 187);
+    font-weight: bold;
+    padding-top: 6px;
+
+
+}
+
+.sort-down {
+    width: 250px;
+    margin-left: 20%;
+    height: 100px;
+    border: 2px solid rgb(255, 187, 0);
+    margin-top: 20px;
+    box-shadow: 0 0 5px 5px rgb(245, 203, 16);
+}
+
+
+.filter {
+    margin-left: 20%;
+    width: 250px;
+    height: 250px;
+    margin-top: 20px;
+    border: 3px solid rgb(237, 186, 32);
+    box-shadow: 0 0 5px 5px rgb(245, 203, 16);
+    overflow-y: scroll;
+}
+
+
+
+#searchWI {
+
+    text-align: center;
+
+}
+
+
+
+.ratings {
+    width: 250px;
+    height: 230px;
+    margin-left: 20%;
+    margin-top: 20px;
+    border: 3px solid rgb(237, 186, 32);
+    box-shadow: 0 0 5px 5px rgb(245, 203, 16);
+}
+
+.leftWI {
+    width: 30%;
+
+    padding-left: 30px;
+}
+
+.rightWI {
+    width: 70%;
+    padding-right: 5%;
+
+
+
+
+}
+
+
+
+
+.card-img-topa {
+    border-radius: 50px;
+    padding: 20px;
+    margin-left: 50px;
+    object-fit: cover;
+}
+
+.card-img-topbest {
+    border-radius: 50px;
+    padding: 20px;
+    margin-left: 50px;
+    object-fit: cover;
+}
+
+/* responsive for device*/
+
+/* for phone */
+
+@media only screen and (max-width: 600px) {
+    .parent-div-WB {
+        display: block;
+    }
+
+    .leftWI {
+        width: 100%;
+
+
+
+    }
+
+    .card-img-topa {
+        border-radius: 50px;
+
+        margin-left: 0px;
+        object-fit: cover;
+    }
+
+    .card-img-topbest {
+        border-radius: 50px;
+
+        margin-left: 0px;
+        object-fit: cover;
+    }
+
+    .card img {
+        max-width: 200px;
+        height: 300px;
+        object-fit: fill;
+    }
+
+
+
+    .rightWI {
+        width: 100%;
+
+
+
+    }
+
+
+
+}
+
+/*for tablet*/
+
+@media only screen and (min-width: 601px) and (max-width: 991px) {
+    .parent-div-WB {
+        display: block;
+    }
+
+    .leftWI {
+        width: 100%;
+
+
+
+    }
+
+    .rightWI {
+        width: 100%;
+
+
+
+    }
+}

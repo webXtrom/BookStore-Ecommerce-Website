@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="/admindash/product.css" rel="stylesheet">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <style>
+  .card-img-top {
+  border-radius: 50px;
+  padding: 15px;
+  
+  object-fit: cover;
+  }
+
+  .card img {
+    max-width: 250px;
+    height: 300px;
+    object-fit: fill;
+  }
+
+  .card {
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    align-self: normal;
+    max-height: 550px;
+  }
+
+  .card-body {
+    padding: 25px;
+    /*margin-top: -15px;*/
+  }
+
+  .btn-primary {
+    border-radius: 50px;
+    width: 120px;
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  .btn-primary:hover {
+    background-color: black;
+    border: none;
+  }
+
+  h3,
+  h5 {
+    color: rgb(0, 91, 228);
+  }
+  </style>
+</head>
+<body>
+  <div class="records table-responsive">
+    <div class="record-header">
+      <div class="add">
+        <button>Add Products</button>
+      </div>
+    </div>
+    <section class="bodyTop">
+      <div class="container py-5 ">
+        <h1 class="text-center">All Stationary Products</h1>
+        <div class="row row-cols-lg-5  row-cols-md-3 row-cols-sm-12 g-4 py-5"  id="productList">
+          <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-database.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+          <script>
+            const firebaseConfig = {
+              apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+              authDomain: "fire9db-f2e9d.firebaseapp.com",
+              databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+              projectId: "fire9db-f2e9d",
+              storageBucket: "fire9db-f2e9d.appspot.com",
+              messagingSenderId: "513706963750",
+              appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+              measurementId: "G-N6QQBNCFZB"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+
+            const database = firebase.database();
+            const proelement = document.getElementById('productList');
+            //const proref = database.ref('productList');
+            firebase.auth().onAuthStateChanged(function (user) {
+              if (user) {
+                const uid = user.uid;
+                const userRef = firebase.database().ref(`stationaryItemList/${uid}`);
+                userRef.on('value', (snapshot) => {
+                  const product = snapshot.val();
+                  for (const proid in product) {
+                    const book = product[proid];
+                    const card = document.createElement('div');
+                    card.classList.add('col');
+                    card.innerHTML = `
+                      <div class="card">
+                        <img src="${book.imageUrl || ''}" class="card-img-top" alt="">
+                        <div class="card-body">
+                          <h5 class="card-title text-center">${book.proname || ''}</h5>
+                          </div>
+                          <div class="mb-5 d-flex justify-content-around">
+                              <h3>৳${book.proprice || ''}</h3>
+                              <button class="btn btn-primary mt-auto">Buy Now</button>
+                          </div>
+                      </div>
+                    `;
+                    proelement.appendChild(card);
+                    console.log('Book Object:', book);
+                    console.log('Image URL:', book.imageUrl);
+                    console.log('Product Name:', book.proname);
+                    console.log('Writer:', book.writer);
+                    console.log('Product Price:', book.proprice);
+                  }
+                });
+              }
+            });
+          </script>
+        </div>
+      </div>
+    </section>
+  </div>
+<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-storage.js"></script>
+
+   
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore Management</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/reviewbycustomer.css">
+    <link rel="stylesheet" href="/css/BestCategory.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
+</head>
+<header>
+    <nav class=" nav navbar bg-body-tertiary navItem sticky-top ">
+        <div class="container-fluid bg-warning p-3">
+            <h1 class="navbar-brand font-weight-bold text-white" id="bookStore">Book-Store</h1>
+            <form class="d-flex" role="search" id="nav1">
+                <i id="icon1" class="fa-solid fa-gift shopping p-3 mx-2" style="color: #000000;"
+                    href="/html/discount.html"></i>
+                <i id="icon2" class="fa-sharp fa-solid fa-cart-shopping p-3 mx-3 " style="color: #000000;"
+                    href="/html/cart.html"></i>
+                <i id="icon3" class="fa-sharp fa-solid fa-book p-3 mx-2 " style="color: #000000;"
+                    href="/html/exchangebook.html"></i>
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary fw-bold" type="submit">Search</button>
+                </form>
+
+            </form>
+        </div>
+        <section class="second-nav">
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container-fluid  ">
+                    <a class="navbar-brand text-warning" href="#"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/index.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/Signup.php">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/otheritem.html">Other items</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning fw-bold" href="/html/subject.html"
+                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    Subject
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item text-warning fw-bold "
+                                            href="/html/science.html">Science</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/academic.html">Academic</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/fiction.html">Friction</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/cooking.html">Cooking
+                                            Books</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/travel.html">Travel
+                                            Books</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/novel.html">Novel</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning fw-bold" href="/html/writers.html"
+                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    Writers
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/writersInside.html">Robin Ewing & Cindy</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/writersInside.html">James Clear
+                                        </a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/writersInside.html">Dhonielle clayton
+                                        </a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/html/writersInside.html">J.
+                                            K. Rowling</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/writersInside.html">William Shakespeare</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/writersInside.html">Stephen King</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold "
+                                            href="/html/writersInside.html">Rumiko Takahashi</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/writersInside.html">Anne Rice</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold"
+                                            href="/html/writersInside.html">Hermann Hesse</a></li>
+
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-warning  fw-bold" href="#"
+                                    id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="true">
+                                    Settings
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/Signin.php">Login as
+                                            Customer</a>
+                                    </li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="#">Login as admin</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/update.html">Update
+                                            info</a></li>
+                                    <li><a class="dropdown-item text-warning fw-bold" href="/signout.php">logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/About.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active text-warning fw-bold" aria-current="page"
+                                    href="/html/Help.html">Help</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+    </nav>
+</header>
+
+<body>
+
+    <!-- Review Start -->
+    <section class="courses my-5">
+        <div class="container w-100">
+            <div class="course-top my-5 p-5">
+                <h1 class=" text-center text-warning ">Discover Our Customer review</h1>
+
+            </div>
+            <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2 ">
+
+                <div class="col">
+                    <div class="card mb-3">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4">
+                                <img src="/images/BEST1.jpg" class="img-fluid rounded-start w-100 " alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-4 ">"Best book to give life a new way"</h5>
+                                    <p class="card-text text-secondary">Some quick example text to build on the card
+                                        title and make up the bulk of the card.</p>
+                                    <h5 class="text-primary">read more...</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col d-flex  align-items-center">
+                    <div class="card mb-3">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4">
+                                <img src="/images/BEST3.jpg" class="img-fluid rounded-start w-100 " alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-4">"Its the best book to make the differences clear in our
+                                        world"</h5>
+                                    <p class="card-text text-secondary">Some quick example text to build on the card
+                                        title and make up the bulk of the card.</p>
+                                    <h5 class="text-primary">read more...</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col d-flex  align-items-center">
+                    <div class="card mb-3">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4">
+                                <img src="/images/BEST6.jpg" class="img-fluid rounded-start w-100 " alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-4">"For me it was the best book i have read i a long time"
+                                    </h5>
+                                    <p class="card-text text-secondary">Some quick example text to build on the card
+                                        title and make up the bulk of the card.</p>
+                                    <h5 class="text-primary">read more...</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col d-flex  align-items-center">
+                    <div class="card mb-3">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4">
+                                <img src="/images/BEST3.jpg" class="img-fluid rounded-start w-100 " alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-4">"For me it just inlights my point of view to this
+                                        matter"</h5>
+                                    <p class="card-text text-secondary">Some quick example text to build on the card
+                                        title and make up the bulk of the card.</p>
+                                    <h5 class="text-primary">read more...</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col d-flex  align-items-center">
+                    <div class="card mb-3">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4">
+                                <img src="/images/kids4.jpg" class="img-fluid rounded-start w-100 " alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-4">"Best fantasy books for children"</h5>
+                                    <p class="card-text text-secondary">Some quick example text to build on the card
+                                        title and make up the bulk of the card.</p>
+                                    <h5 class="text-primary">read more...</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col d-flex  align-items-center">
+                    <div class="card mb-3">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4">
+                                <img src="/images/kids2.jpg" class="img-fluid rounded-start w-100 " alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title fs-4">"Best kids books"
+                                    </h5>
+                                    <p class="card-text text-secondary">Some quick example text to build on the card
+                                        title and make up the bulk of the card.</p>
+                                    <h5 class="text-primary">read more...</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="text-center mt-5">
+            <div class="btn btn-primary ps-4 pe-4 pt-2 pb-2 fs-5 fw-bold">view All</div>
+        </div>
+    </section>
+
+    <script src="/js/home.js"></script>
+</body>
+<footer>
+    <div class="goal">
+        <h1 class="goal-text">Visit us</h1>
+        <i class="fa-brands fa-instagram p-3 " style="color: #fdcd21;"></i>
+        <i class="fa-brands fa-facebook p-3" style="color: #fdcd21"></i>
+        <i class="fa-brands fa-twitter p-3" style="color: #fdcd21;"></i>
+
+    </div>
+    <hr>
+    </hr>
+    <div class="footer-content">
+        <ul class="list-items">
+            <li>Contact Us </li>
+            <li>Terms of Service </li>
+            <li>Privacy Policy</li>
+            <li>Privacy Settings</li>
+            <li>Home </li>
+            <li>Other Items</li>
+        </ul>
+
+    </div>
+
+</footer>
+
+</html>

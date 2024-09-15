@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+ 
+</head>
+<body>
+    <div class="py-5">
+        <dic class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card border-dark mb-3">
+                        <div class="card-header">
+                            <h3> Forget Password </h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="form-group mb-3">
+                                <label> Email Address </label>
+                                <input type="email" id="email" class="form-control border-dark" placeholder="Enter your email"/>
+                            </div>
+                            <div class="form-group mb-3">
+                                <button type="submit" id="reset" class="btn btn-primary" style="width: 80px"> Send 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+    import { getAuth, sendPasswordResetEmail, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+   
+    const firebaseConfig = {
+        apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+        authDomain: "fire9db-f2e9d.firebaseapp.com",
+        databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+        projectId: "fire9db-f2e9d",
+        storageBucket: "fire9db-f2e9d.appspot.com",
+        messagingSenderId: "513706963750",
+        appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+        measurementId: "G-N6QQBNCFZB"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const auth = getAuth();
+
+    function resetPassword() {
+        const email = document.getElementById('email').value;
+        
+        sendPasswordResetEmail(auth, email).then(() => {
+            alert("A password reset link has been sent to your email.");
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            console.log(errorCode);
+            const errorMessage = error.message;
+        });
+    }
+    document.getElementById('reset').addEventListener('click', resetPassword);
+</script>
+
+  
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
+
+</body>
+</html>

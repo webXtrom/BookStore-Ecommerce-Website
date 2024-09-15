@@ -1,0 +1,312 @@
+#bookStore {
+    font-size: 35PX;
+}
+
+
+
+/*---------
+ slider
+------------*/
+.slider{
+    padding-top: 100px;
+}
+.c-item {
+    height: 500px;
+}
+
+.c-img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+
+.bodyTop {
+    height: auto;
+
+
+    align-items: center;
+}
+
+/*-------
+card item
+------*/
+.card-img-top {
+    border-radius: 50px;
+    padding: 20px;
+    margin-left: 20px;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.card img {
+    max-width: 200px;
+    height: 300px;
+    object-fit: fill;
+}
+
+.card {
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    align-self: normal;
+    max-height: 600px;
+}
+
+.card-body {
+    padding: 25px;
+    /*margin-top: -15px;*/
+}
+
+.titleCard {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.writerName {
+    height: 30px;
+    margin-top: 20px;
+}
+
+.btn-primary {
+    border-radius: 50px;
+    width: 120px;
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.btn-primary:hover {
+    background-color: black;
+    border: none;
+}
+
+h3,
+h5 {
+    color: rgb(0, 91, 228);
+}
+
+
+#loginTop {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    border: 2px solid whitesmoke;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+        
+}
+
+/*-------
+Subscribe
+---------*/
+.subscribe {
+    text-align: center;
+    margin: 10px;
+}
+
+.email-container {
+    display: flex;
+    margin: 30px;
+    margin-left: 400px;
+    margin-right: 400px;
+    padding: 50px;
+    background-color: rgb(230, 236, 203);
+
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+#email-input {
+    padding: 10px;
+    width: 100%;
+    color: black;
+    background-color: rgb(220, 219, 219);
+    border: none;
+}
+
+#subscribe-button {
+    padding: 10px;
+    width: 30%;
+    border: none;
+    position: relative;
+    background-color: crimson;
+    color: rgb(255, 255, 255);
+
+
+}
+
+
+
+
+/*----------------
+    footer part
+---------------*/
+
+footer {
+    background-color: rgb(244, 241, 241);
+    height: auto;
+    width: 100vw;
+
+    margin-top: 100px;
+    background-color: #171515;
+    margin-left: 0px;
+
+
+    color: rgb(223, 214, 214)
+}
+
+.goal {
+
+
+    width: 90%;
+    padding: 3%;
+    align-items: center;
+    text-align: center;
+}
+
+.goal-text {
+    font-size: 30px;
+}
+
+.footer-content {
+
+
+    width: 90%;
+    padding: 3%;
+    align-items: center;
+    text-align: center;
+}
+
+.list-items {
+    justify-content: center;
+
+
+    text-decoration: none;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    text-align: center;
+
+
+
+}
+
+.list-items li {
+    margin: 0 10px;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* responsive for device*/
+
+/* for phone */
+
+@media only screen and (max-width: 600px) {
+    #nav1 {
+        float: left;
+        display: block;
+    }
+
+    .card-img-top {
+
+        object-fit: cover;
+    }
+
+    .card img {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        margin-left: 200px;
+        height: 300px;
+        object-fit: fill;
+    }
+
+    .card {
+
+        border-radius: 30px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+        align-self: normal;
+        max-height: 600px;
+    }
+
+    .card-body {
+
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    .btn-primary {
+        border-radius: 50px;
+        width: 120px;
+        align-self: flex-start;
+        margin-top: auto;
+    }
+
+    /*-------
+Subscribe
+---------*/
+    .subscribe {
+        text-align: center;
+        margin: 10px;
+    }
+
+    .email-container {
+        display: flex;
+        margin: 30px;
+        margin-left: 40px;
+        margin-right: 40px;
+        padding: 1;
+        background-color: rgb(230, 236, 203);
+
+
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    #email-input {
+        padding: 10px;
+        width: 100%;
+        color: white;
+        background-color: rgb(220, 219, 219);
+        border: none;
+    }
+
+    #subscribe-button {
+        padding: 10px;
+        width: 30%;
+        border: none;
+        position: relative;
+        background-color: crimson;
+        color: rgb(255, 255, 255);
+
+
+    }
+
+
+}
+
+/*for tablet*/
+
+@media only screen and (min-width: 601px) and (max-width: 991px) {
+    .email-container {
+        display: flex;
+        margin: 300px;
+        margin-left: 200px;
+        margin-right: 200px;
+        padding: 1;
+        background-color: rgb(230, 236, 203);
+
+
+        justify-content: center;
+        align-items: center;
+
+    }
+}

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+  <style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .container {
+    position: relative;
+    max-width: 570px;
+    width: 100%;
+    padding: 25px;
+    border-radius: 8px;
+    background-color: lightblue;
+  }
+  .container h2 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-left: 200px;
+    color: #333;
+  }
+  .container form {
+    margin-top: 30px;
+  }
+
+  form .field {
+    margin-bottom: 20px;
+  }
+
+
+
+  form .input-field {
+    position: relative;
+    height: 40px;
+    width: 85%;
+  }
+  .input-field input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    border: 1px solid #d1d1d1;
+  }
+  .invalid input {
+    border-color: #d93025;
+  }
+  .input-field .getotp {
+    position: absolute;
+  right: -180px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    cursor: pointer;
+    padding: 3px;
+    background-color: transparent; 
+    border: none;
+    color: rgb(112, 175, 146);
+  }
+  .input-field .show-hide {
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #919191;
+    cursor: pointer;
+    padding: 3px;
+  }
+  .field .error {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    color: #d93025;
+    font-size: 13px;
+    display: none;
+  }
+  .invalid .error {
+    display: flex;
+  }
+  .error .error-icon {
+    margin-top: -15px;
+    margin-right: 6px;
+    font-size: 15px;
+  }
+  .create-password .error {
+    align-items: flex-start;
+  }
+  .create-password .error-icon {
+    margin-top: 4px;
+  }
+  .button {
+    margin: 25px 0 6px;
+  }
+  .button #sub{
+      width: 180px;
+      height: 40px;
+      margin-left: 150px;
+      border-radius: 8px;
+  
+  }
+  button {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: #4070f4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  button:hover {
+    background-color: #0e4bf1;
+  }
+  .signin{
+      text-decoration: none;
+      margin-left: 96px;
+      font-size: 16px;
+  }
+  .signin span a{
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+  }
+
+
+</style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h2>Sign Up</h2>
+        <form method="post" id="form">
+  
+       
+          <div class="field uname-field">
+                      
+              <div class="input-field">
+         
+          <input type = "text" name="fname" id="uname" placeholder="Enter Your Seller Id" class="name"/>
+          </div>
+          <span class="error email-error">
+            <i class="bx bx-error-circle error-icon"></i>
+            <p class="error-text">Username must be atleast 5 characters and only be alphanumeric.</p>
+          </span>
+          </div>
+  
+  
+          <div class="field email-field">
+            <div class="input-field">
+              <input type="email" id="eml" placeholder="Enter your email" class="email" />
+            </div>
+            <span class="error email-error">
+              <i class="bx bx-error-circle error-icon"></i>
+              <p class="error-text">Please enter a valid email</p>
+            </span>
+          </div>
+  
+          <div class="field phone-field">
+            <div class="input-field">
+         
+             
+                <input type="tel" id="phn" placeholder="Enter your phone number" class="phone" style=" padding-right: 80px; " />
+               
+             
+              </div>
+            
+           
+              <span class="error email-error">
+                <i class="bx bx-error-circle error-icon"></i>
+                <p class="error-text">Please enter a valid number</p>
+              </span>
+
+            
+            </div>
+  
+         
+      
+  
+          <div class="field create-password">
+            <div class="input-field">
+              <input type="password" id="passwrd" placeholder="Create password" class="password"/>
+              <i class="bi bi-eye-slash-fill show-hide"></i>
+            </div>
+  
+            <span class="error password-error">
+              <i class="bx bx-error-circle error-icon"></i>
+              <p class="error-text">Please enter atleast 8 charatcer with number, symbol, small and
+                capital letter. </p>
+            </span>
+          </div>
+  
+  
+  
+          <div class="field confirm-password">
+            <div class="input-field">
+              <input type="password" id="cpasswrd" placeholder="Confirm password" class="cPassword"/>
+              <i class="bi bi-eye-slash-fill show-hide"></i>
+            </div>
+            <span class="error cPassword-error">
+              <i class="bx bx-error-circle error-icon"></i>
+              <p class="error-text">Password don't match</p>
+            </span>
+          </div>
+        <div class="button">
+            <button type="submit" id="sub">Signup</button>
+            </div>
+           
+          
+  
+          <div class="signin">
+              <span>Already have an account?<a href="login.html">LogIn here</a></span>
+          </div>
+        </form>
+      </div>
+  
+   
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, onChildAdded, equalTo, query, orderByChild, get, set, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAuuNvQlbZYl3kyo_eGvq8IFX_ROVMnyag",
+      authDomain: "fire9db-f2e9d.firebaseapp.com",
+      databaseURL: "https://fire9db-f2e9d-default-rtdb.firebaseio.com",
+      projectId: "fire9db-f2e9d",
+      storageBucket: "fire9db-f2e9d.appspot.com",
+      messagingSenderId: "513706963750",
+      appId: "1:513706963750:web:df1b5b51fb3b5d715487e7",
+      measurementId: "G-N6QQBNCFZB"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    const db = getDatabase(app);
+    const auth = getAuth();
+    const form = document.querySelector("form"),
+
+    unameField = form.querySelector(".uname-field"),
+    unameInput = unameField.querySelector(".name"),
+    
+    emailField = form.querySelector(".email-field"),
+    emailInput = emailField.querySelector(".email"),
+
+    phoneField = form.querySelector(".phone-field"),
+    phoneInput = phoneField.querySelector(".phone"),
+
+    passField = form.querySelector(".create-password"),
+    passInput = passField.querySelector(".password"),
+
+    cPassField = form.querySelector(".confirm-password"),
+    cPassInput = cPassField.querySelector(".cPassword");
+
+  function checkuname(){
+    const unamePattern = /[a-zA-Z0-9]{5,}/;
+    if (!unameInput.value.match(unamePattern)) {
+     return unameField.classList.add("invalid"); 
+    }
+    unameField.classList.remove("invalid"); 
+  }
+
+  function checkEmail() {
+    const emaiPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailInput.value.match(emaiPattern)) {
+      return emailField.classList.add("invalid"); 
+    }
+    emailField.classList.remove("invalid"); 
+  }
+
+
+  function checkPhone() {
+    const phnPattern = /(\+88)?-?01[3-9]\d{8}$/;
+    if (!phoneInput.value.match(phnPattern)) {
+      return phoneField.classList.add("invalid"); 
+    }
+    phoneField.classList.remove("invalid"); 
+  }
+
+
+  function encpass(){
+    var epass = CryptoJS.AES.encrypt(passInput.value, passInput.value);
+    return epass.toString();
+  }
+  function createPass() {
+    const minLength = 8;
+    if (passInput.value.length < minLength) {
+     return passField.classList.add("invalid");
+    }
+    passField.classList.remove("invalid"); 
+  }
+
+
+  function confirmPass() {
+  if (passInput.value !== cPassInput.value || cPassInput.value === "") {
+    return cPassField.classList.add("invalid");
+  }
+  cPassField.classList.remove("invalid");
+  }
+  const eyeIcons = document.querySelectorAll(".show-hide");
+
+  eyeIcons.forEach((eyeIcon) => {
+    eyeIcon.addEventListener("click", () => {
+      const pInput = eyeIcon.parentElement.querySelector("input");
+      if (pInput.type === "password") {
+        eyeIcon.classList.replace("bi-eye-slash-fill", "bi-eye-fill");
+        return (pInput.type = "text");
+      }
+      eyeIcon.classList.replace("bi-eye-fill", "bi-eye-slash-fill");
+      pInput.type = "password";
+    });
+  });
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    checkuname();
+    checkEmail();
+    checkPhone();
+    createPass();
+    confirmPass();
+
+    unameInput.addEventListener("keyup", checkuname);
+    emailInput.addEventListener("keyup", checkEmail);
+    phoneInput.addEventListener("keyup", checkPhone);
+    passInput.addEventListener("keyup", createPass);
+    cPassInput.addEventListener("keyup", confirmPass);
+
+    if (
+      !unameField.classList.contains("invalid") &&
+      !emailField.classList.contains("invalid") &&
+      !phoneField.classList.contains("invalid") &&
+      !passField.classList.contains("invalid") &&
+      !cPassField.classList.contains("invalid")
+    ) {
+      const emailcheck = document.getElementById('eml').value;
+      const name = document.getElementById('uname').value;
+      const phone = document.getElementById('phn').value;
+
+      try {
+        const email = document.getElementById('eml').value;
+        const password = document.getElementById('passwrd').value;
+        const auth = getAuth();
+        createUserWithEmailAndPassword(auth, email, password).then((userCredentials)=>{
+          sendEmailVerification(auth.currentUser).then(() => {
+          alert("Email verification link sent.");
+          })
+          alert("User created successfully.");
+          const user = userCredentials.user;
+          console.log(user);
+                
+          const emailQuery = query(ref(db, 'List/'), orderByChild('uemail'), equalTo(emailcheck));
+          get(emailQuery).then((snapshot) => {
+            if (snapshot.exists()) {
+              console.log("Data exists:", snapshot.val());
+            } else {
+              const authUid = user.uid;
+              set(ref(db, 'List/' + authUid), {
+                //slno: slno,
+                uid: authUid,
+                uname: name,
+                uemail: emailcheck,
+                uphone: phone,
+                upass: encpass(),
+              }).then(() => {
+                console.log("Data added successfully");
+              }).catch((error) => {
+                console.error("Error adding data:", error);
+              });
+            }
+          }).catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+        })
+        alert("Login");
+      } catch (error) {
+      console.error("Firebase Authentication Error:", error.message);
+    }
+  }
+  form.reset();   
+});
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
